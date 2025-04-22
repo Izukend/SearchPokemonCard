@@ -1,0 +1,26 @@
+<div>
+    <input
+        type="text"
+        placeholder="Rechercher une carte"
+        data-model="query"
+        class="px-3 py-2 rounded w-full text-sm"
+        data-action="input->search#onSearch" 
+    >
+
+    <p>Valeur de la recherche: {{ this.query }}</p>
+
+    {% if this.results is not empty %}
+        <ul class="absolute bg-white shadow-lg mt-1 rounded w-full max-h-60 overflow-auto z-50">
+            {% for card in this.results %}
+                <li class="p-2 hover:bg-gray-100 border-b text-sm">
+                    <div class="card-result">
+                        <img src="{{ card.image }}/high.webp" alt="{{ card.name['fr'] ?? card.name['en'] }}" class="w-10 h-10 inline-block mr-2">
+                        <span>{{ card.name['fr'] ?? card.name['en'] }}</span>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% elseif this.query|length >= 2 %}
+        <p>Aucune carte trouvée.</p>
+    {% endif %}
+</div>
