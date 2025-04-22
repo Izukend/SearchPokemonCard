@@ -7,7 +7,7 @@ use Symfony\UX\LiveComponent\Attribute\Computed;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 
-#[AsLiveComponent('card_search')]
+#[AsLiveComponent('card_search', template:'components/card_search.html.twig')]
 class CardSearchComponent
 {
     #[LiveProp(writable: true)]
